@@ -1,0 +1,39 @@
+:: Define Platform Version
+
+set JAVA_BASE=C:
+set ANDROID_BASE=D:
+set ANDROID_API_VERSION=android-28
+set ANDROID_BUILDTOOL_VERSION=28.0.3
+set PROJECT_BASE=D:
+set PROJECT_NAME=AndroidTest
+set ANDROID_PROJECT=D:\AndroidBuildWithCommand
+
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 0_Preparing.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 1_CompileRClass.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 2_CompileSourceJava.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 3_DexConvert.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 4_CreateAPK.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 5_SignAPK.cmd
+
+%ANDROID_BASE%
+cd %ANDROID_PROJECT%\%PROJECT_NAME%
+call 6_ZipAlignAPK.cmd
+
+echo BUILD SUCCESSFUL
+pause
